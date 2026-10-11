@@ -5,7 +5,7 @@
 > An open-source Go engine that scans Ashby, Greenhouse, and Lever job boards concurrently. And remembers every posting she has ever seen. Job postings are hiring signals; Connie is the memory that makes them legible.
 
 **Stack:** Go · SQLite · Concurrency · Open source
-**Live:** https://github.com/saiwrd/connie
+**Live:** https://github.com/joelrmartinez/connie
 
 ## Key numbers
 
@@ -29,7 +29,7 @@ Built test-first throughout: fixtures recorded from one live session per API, po
 
 - On her second-ever run. 67 seed boards, three ATSes, zero errors. She surfaced a remote "AI GTM Architect (Revenue Operations)" posting that an Ashby-only sweep structurally could not see.
 - Run her on a cron and the Registry diff becomes a feed: who started hiring for what, the day it opened.
-- Open source at github.com/saiwrd/connie. The README's design notes are half the point.
+- Open source at github.com/joelrmartinez/connie. The README's design notes are half the point.
 
 ---
 HTML version: https://pushtomain.xyz/work/connie/
