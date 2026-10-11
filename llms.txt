@@ -31,7 +31,7 @@ Cold email is table stakes; it should run in the background. Work shipped in Saa
 ## Tools (The Circus)
 
 - [Lamplighter](https://pushtomain.xyz/work/lamplighter.md): Live GTM-stack fingerprinting
-- [Connie](https://pushtomain.xyz/work/connie.md): Open-source hiring-signal engine (github.com/saiwrd/connie)
+- [Connie](https://pushtomain.xyz/work/connie.md): Open-source hiring-signal engine (github.com/joelrmartinez/connie)
 - [The Math of Sales](https://pushtomain.xyz/work/math-of-sales.md): Outbound unit-economics calculator
 - [Cassette](https://pushtomain.xyz/work/cassette.md): Local meeting recorder (in progress)
 
@@ -51,6 +51,6 @@ Cold email is table stakes; it should run in the background. Work shipped in Saa
 
 - Email: joel@pushtomain.xyz
 - LinkedIn: https://www.linkedin.com/in/joelrmartinez/
-- GitHub: https://github.com/saiwrd
+- GitHub: https://github.com/joelrmartinez
 - X: https://x.com/itsjoelmartinez
 - Newsletter: https://pushtomain.xyz/newsletter/
