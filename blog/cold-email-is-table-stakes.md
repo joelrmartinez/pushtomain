@@ -2,7 +2,7 @@
 
 > A good GTM engineer compounds. Most companies only use one for the part that doesn't.
 
-Live: https://pushtomain.xyz/newsletter/001/
+Live: https://pushtomain.xyz/blog/cold-email-is-table-stakes/
 
 Big things are happening for AI in go-to-market. I've believed for a long time that a good GTM engineer, used properly, produces growth and learning that compound. Every experiment sharpens the next one. Every list makes the data better. Every conversation teaches the system something it keeps.
 
@@ -35,6 +35,6 @@ That only happens when the GTM engineer sits with revenue leaders in both sales 
 
 It's for founders, CEOs, and revenue leaders who know AI matters and want to see what go-to-market looks like when it's done properly. I'll cover what I'm building, what compounds, and what's noise. I'll send it when I have something worth your time.
 
-If you're trying to figure out where a GTM engineer fits in your company, email joel@pushtomain.xyz and tell me what you sell. Subscribe at https://pushtomain.xyz/newsletter/.
+If you're trying to figure out where a GTM engineer fits in your company, email joel@pushtomain.xyz and tell me what you sell. Subscribe at https://pushtomain.xyz/blog/.
 
 — Joel

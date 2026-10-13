@@ -1,2 +1,12 @@
-/work/integrators-exit/* /work/scalphunter/ 301
+# Static redirects. Workers static assets check these before splats.
+/newsletter /blog/cold-email-is-table-stakes/ 301
+/newsletter/ /blog/cold-email-is-table-stakes/ 301
+/newsletter/index.html /blog/cold-email-is-table-stakes/ 301
+/newsletter/001 /blog/cold-email-is-table-stakes/ 301
+/newsletter/001/ /blog/cold-email-is-table-stakes/ 301
+/newsletter/001/index.html /blog/cold-email-is-table-stakes/ 301
+/newsletter/001.md /blog/cold-email-is-table-stakes.md 301
 /work/integrators-exit.md /work/scalphunter.md 301
+
+# Dynamic redirects.
+/work/integrators-exit/* /work/scalphunter/ 301

@@ -2,8 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://pushtomain.xyz/</loc></url>
   <url><loc>https://pushtomain.xyz/about/</loc></url>
-  <url><loc>https://pushtomain.xyz/newsletter/</loc></url>
-  <url><loc>https://pushtomain.xyz/newsletter/001/</loc></url>
+  <url><loc>https://pushtomain.xyz/blog/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://pushtomain.xyz/blog/cold-calling-pilot-week-by-week/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://pushtomain.xyz/blog/cold-email-is-table-stakes/</loc><lastmod>2026-09-23</lastmod></url>
+  <url><loc>https://pushtomain.xyz/blog/what-a-gtm-engineer-isnt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://pushtomain.xyz/services/</loc></url>
   <url><loc>https://pushtomain.xyz/intake/</loc></url>
   <url><loc>https://pushtomain.xyz/numbers/</loc></url>

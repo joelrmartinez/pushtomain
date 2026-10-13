@@ -14,10 +14,14 @@
 
 Cold email is table stakes; it should run in the background. Work shipped in SaaS, healthcare, hardware, mineral rights, and M&A.
 
-## Newsletter. Push to Main
+## Blog
 
-- Hub: https://pushtomain.xyz/newsletter/
-- [Issue 01. Cold email is table stakes](https://pushtomain.xyz/newsletter/001.md): Why a good GTM engineer compounds, and what the work is beyond cold email.
+Push to Main is the email letter.
+
+- Hub: https://pushtomain.xyz/blog/
+- [What a GTM engineer isn't](https://pushtomain.xyz/blog/what-a-gtm-engineer-isnt.md): A GTM engineer isn't an SDR, a RevOps ticket queue, a list vendor, an agency, a sales leader, or an AI button.
+- [How I run a cold-calling pilot, week by week](https://pushtomain.xyz/blog/cold-calling-pilot-week-by-week.md): What a cold-calling pilot with a GTM engineer covers: phone setup, list, first dials, diagnosis, and the decision at the end.
+- [Cold email is table stakes](https://pushtomain.xyz/blog/cold-email-is-table-stakes.md): Why a good GTM engineer compounds, and what the work is beyond cold email.
 
 ## Selected proof
 
@@ -53,4 +57,4 @@ Cold email is table stakes; it should run in the background. Work shipped in Saa
 - LinkedIn: https://www.linkedin.com/in/joelrmartinez/
 - GitHub: https://github.com/joelrmartinez
 - X: https://x.com/itsjoelmartinez
-- Newsletter: https://pushtomain.xyz/newsletter/
+- Blog: https://pushtomain.xyz/blog/

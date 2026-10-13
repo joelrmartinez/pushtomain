@@ -60,7 +60,7 @@ Most GTM templates assume a SaaS buyer. Joel has shipped systems for healthcare,
 
 Joel spent ten years carrying a bag, then started building the systems he wished he had while selling. He founded Punch GTM, an AI-powered outbound agency, and runs push to main as his independent GTM engineering practice from Seattle.
 
-The name is the habit: build the thing, then push to main. Every tool and case study on this site was built by Joel orchestrating AI. He writes about what works in [Push to Main](https://pushtomain.xyz/newsletter/), and you can find him on [LinkedIn](https://www.linkedin.com/in/joelrmartinez/), [X](https://x.com/itsjoelmartinez), and [GitHub](https://github.com/joelrmartinez).
+The name is the habit: build the thing, then push to main. Every tool and case study on this site was built by Joel orchestrating AI. He writes about what works in [Push to Main](https://pushtomain.xyz/blog/), and you can find him on [LinkedIn](https://www.linkedin.com/in/joelrmartinez/), [X](https://x.com/itsjoelmartinez), and [GitHub](https://github.com/joelrmartinez).
 
 ## How working with Joel works
 
@@ -87,7 +87,7 @@ The name is the habit: build the thing, then push to main. Every tool and case s
 - **Clients:** Client work is anonymized; case studies list industry and verified results
 - **Projects documented:** 15 systems and tools on [pushtomain.xyz](https://pushtomain.xyz/), with verified metrics
 - **Alternatives:** A full-time GTM engineering hire, outbound agencies, RevOps consultancies
-- **Newsletter:** [Push to Main](https://pushtomain.xyz/newsletter/)
+- **Newsletter:** [Push to Main](https://pushtomain.xyz/blog/)
 - **Social:** [LinkedIn](https://www.linkedin.com/in/joelrmartinez/) · [X](https://x.com/itsjoelmartinez) · [GitHub](https://github.com/joelrmartinez)
 
 ## Frequently asked questions
