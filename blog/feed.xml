@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Push to Main</title>
+    <link>https://pushtomain.xyz/blog/</link>
+    <description>AI in go-to-market for CEOs and revenue leaders. A letter from Joel Martinez.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Oct 2026 15:00:00 GMT</lastBuildDate>
+    <item>
+      <title>What a GTM engineer isn&#x27;t</title>
+      <link>https://pushtomain.xyz/blog/what-a-gtm-engineer-isnt/</link>
+      <guid>https://pushtomain.xyz/blog/what-a-gtm-engineer-isnt/</guid>
+      <pubDate>Mon, 12 Oct 2026 15:00:00 GMT</pubDate>
+      <description>A GTM engineer isn&#x27;t an SDR, a RevOps ticket queue, a list vendor, an agency, a sales leader, or an AI button.</description>
+    </item>
+    <item>
+      <title>How I run a cold-calling pilot, week by week</title>
+      <link>https://pushtomain.xyz/blog/cold-calling-pilot-week-by-week/</link>
+      <guid>https://pushtomain.xyz/blog/cold-calling-pilot-week-by-week/</guid>
+      <pubDate>Mon, 12 Oct 2026 15:00:00 GMT</pubDate>
+      <description>What a cold-calling pilot with a GTM engineer covers: phone setup, list, first dials, diagnosis, and the decision at the end.</description>
+    </item>
+    <item>
+      <title>Cold email is table stakes</title>
+      <link>https://pushtomain.xyz/blog/cold-email-is-table-stakes/</link>
+      <guid>https://pushtomain.xyz/blog/cold-email-is-table-stakes/</guid>
+      <pubDate>Wed, 23 Sep 2026 15:00:00 GMT</pubDate>
+      <description>A good GTM engineer compounds. Most companies only use one for the part that doesn&#x27;t.</description>
+    </item>
+  </channel>
+</rss>
