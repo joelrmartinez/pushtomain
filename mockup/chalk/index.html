@@ -69,22 +69,42 @@
       font-family: var(--sans);
       font-weight: 400;
       color: var(--ink);
-      background: var(--paper);
+      background-color: var(--paper);
+      background-image: url("mottle.svg"), url("grain.svg");
+      background-size: 560px 560px, 180px 180px;
+      background-repeat: repeat;
       line-height: 1.55;
       font-size: 1.0625rem;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    body::before {
-      content: "";
+    .board {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 980px;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.045;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      overflow: hidden;
+    }
+
+    .board svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .board-narrow { display: none; }
+
+    @media (max-width: 720px) {
+      .board { height: 680px; }
+      .board-wide { display: none; }
+      .board-narrow { display: block; }
     }
 
     ::selection { background: var(--green); color: var(--paper); }
@@ -550,6 +570,46 @@
   </style>
 </head>
 <body>
+  <div class="board" aria-hidden="true">
+    <svg class="board-wide" viewBox="0 0 1280 980" fill="none">
+      <defs>
+        <filter id="board-chalk" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" seed="5" result="warp"/>
+          <feDisplacementMap in="SourceGraphic" in2="warp" scale="1.7" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.35" numOctaves="2" seed="9" result="dust"/>
+          <feColorMatrix in="dust" type="luminanceToAlpha" result="dustA"/>
+          <feComponentTransfer in="dustA" result="mask">
+            <feFuncA type="table" tableValues="0 0.22 0.9 1 1 1 1 1"/>
+          </feComponentTransfer>
+          <feComposite in="rough" in2="mask" operator="in"/>
+        </filter>
+      </defs>
+      <g filter="url(#board-chalk)" stroke="#1b4d3e" stroke-linecap="round" opacity="0.42">
+        <path d="M48 168C62 150 78 132 96 114" stroke-width="5"/>
+        <path d="M70 268C82 250 98 232 116 214" stroke-width="3.6"/>
+        <path d="M36 704C48 688 62 672 78 656" stroke-width="3.2"/>
+        <path d="M404 126C418 112 434 98 452 84" stroke-width="3.4"/>
+        <path d="M1194 132C1208 116 1224 100 1240 84" stroke-width="4"/>
+        <path d="M1168 448C1182 432 1198 416 1214 400" stroke-width="3"/>
+        <path d="M1092 300C990 292 900 278 812 268" stroke-width="4.2"/>
+        <path d="M812 268l22-14M812 268l20 16" stroke-width="3.6"/>
+        <path d="M30 492h96" stroke-width="3.4"/>
+        <path d="M48 472l58 42" stroke-width="3"/>
+        <path d="M936 418c58-8 118 6 162-4 8 34 2 74 8 104-70 10-140-4-168 2-12-42-8-82-2-102" stroke-width="3.6"/>
+      </g>
+    </svg>
+    <svg class="board-narrow" viewBox="0 0 390 680" fill="none">
+      <g stroke="#1b4d3e" stroke-linecap="round" opacity="0.4">
+        <path d="M22 118h62" stroke-width="3"/>
+        <path d="M36 104l40 30" stroke-width="2.6"/>
+        <path d="M118 124c10-12 22-24 36-36" stroke-width="3"/>
+        <path d="M312 112c12-14 24-26 38-38" stroke-width="3.2"/>
+        <path d="M248 238h70v32h-66v-28" stroke-width="2.8"/>
+        <path d="M368 250 L340 254" stroke-width="2.6"/>
+        <path d="M340 254 l9-7 M340 254 l7 7" stroke-width="2.2"/>
+      </g>
+    </svg>
+  </div>
   <div class="wrap" id="top">
     <header class="topbar">
       <a class="mark" href="/">
