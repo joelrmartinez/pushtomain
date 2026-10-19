@@ -28,13 +28,13 @@ Push to Main is the email letter.
 - [Email From Zero](https://pushtomain.xyz/work/email-from-zero.md): Net-new cold-email for a phone-only mineral-rights company
 - [Clinical Signal Platform](https://pushtomain.xyz/work/clinical-signal-platform.md): Healthcare data platform + federal exclusion screening
 - [Scalphunter](https://pushtomain.xyz/work/scalphunter.md): M&A-arbitrage propensity universe. 1,336 companies
-- [Merlin](https://pushtomain.xyz/work/merlin.md): Funding-round signal engine on Cloudflare
+- [Merlin](https://pushtomain.xyz/work/merlin.md): Funding-round signal engine on Cloudflare. Walkthrough: https://merlin.pushtomain.xyz
 - [SEC Form D Pipeline](https://pushtomain.xyz/work/sec-form-d-pipeline.md): 14,749 newly-funded companies from ~99K filings
 - [Punch GTM](https://pushtomain.xyz/work/punch-gtm.md): AI-powered outbound agency
 
 ## Tools (The Circus)
 
-- [Lamplighter](https://pushtomain.xyz/work/lamplighter.md): Live GTM-stack fingerprinting
+- [Lamplighter](https://pushtomain.xyz/work/lamplighter.md): Live GTM-stack fingerprinting. Walkthrough: https://lamplighter.pushtomain.xyz
 - [Connie](https://pushtomain.xyz/work/connie.md): Open-source hiring-signal engine (github.com/joelrmartinez/connie)
 - [The Math of Sales](https://pushtomain.xyz/work/math-of-sales.md): Outbound unit-economics calculator
 - [Cassette](https://pushtomain.xyz/work/cassette.md): Local meeting recorder (in progress)

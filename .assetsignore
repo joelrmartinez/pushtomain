@@ -4,6 +4,8 @@
 .assetsignore
 wrangler.jsonc
 vercel.json
+src/
+docs/
 clairevo-reference.png
 pushtomain-desktop.png
 pushtomain-mobile.png

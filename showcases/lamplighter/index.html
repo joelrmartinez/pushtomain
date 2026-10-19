@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lamplighter · GTM stack read · Joel Martinez</title>
+  <meta name="description" content="Walkthrough of Lamplighter: a company URL in, the public GTM stack fingerprinted at the edge, a short field read back.">
+  <meta property="og:title" content="Lamplighter · a GTM stack read">
+  <meta property="og:description" content="Type a company, see the go-to-market stack its public site exposes, then read a short interpretation from Workers AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lamplighter.pushtomain.xyz/">
+  <link rel="canonical" href="https://lamplighter.pushtomain.xyz/">
+  <link rel="preload" href="/fonts/ApfelGrotezk-Fett.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ApfelGrotezk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/showcases/showcase.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <a class="mark" href="https://pushtomain.xyz/">push to main</a>
+      <nav class="top-nav">
+        <a href="https://pushtomain.xyz/#how">How I help</a>
+        <a href="https://pushtomain.xyz/about/">About</a>
+        <a href="https://pushtomain.xyz/blog/">Blog</a>
+        <a href="https://pushtomain.xyz/services/">Services</a>
+      </nav>
+    </header>
+
+    <section class="detail-hero">
+      <p class="kicker reveal d2">Showcase · The Circus · 02</p>
+      <h1 class="detail-title reveal d3">Lamplighter</h1>
+      <p class="detail-lede reveal d4">Type any company and see its go-to-market stack. What they run, who they buy from. Fingerprinted live from the edge, then read back to you as a plain-English take.</p>
+      <p class="walkthrough reveal d5">This page is a walkthrough of that read: the URL that goes in, the fingerprint, and the field read that comes back. A lookup runs in the Worker from the case study.</p>
+      <div class="tags reveal d5">
+        <span class="tag soon">Cloudflare</span>
+        <span class="tag soon">Workers AI</span>
+        <span class="tag soon">Edge</span>
+      </div>
+      <div class="hero-ctas reveal d6">
+        <a class="visit" href="https://pushtomain.xyz/work/lamplighter/">Read the case study <span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <div class="detail-body">
+      <div class="block">
+        <h2>What it does</h2>
+        <p>Knowing what a company runs, the CRM, the outbound tooling, the analytics, tells you how to sell to them and who they already trust. That picture usually sits behind a paid product. Lamplighter does it from a URL, at no charge, from the edge.</p>
+        <p>A Worker fetches the company's public surface and fingerprints the go-to-market technology it exposes. Workers AI then writes a field read: a short interpretation of what the stack implies about how they operate, and where an opening might be.</p>
+      </div>
+
+      <div class="block">
+        <h2>How it works</h2>
+        <div class="pipeline" aria-hidden="true">
+          <b>URL</b><span>→</span>
+          <b>Fetch</b><span>→</span>
+          <b>Fingerprint</b><span>→</span>
+          <b>Field read</b>
+        </div>
+
+        <h2>Inputs</h2>
+        <ul class="ticks">
+          <li>A company, given as a URL.</li>
+          <li>The public surface that URL returns. The case study does not describe a login, a database, or a third-party data vendor.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Steps</h2>
+        <ol class="steps">
+          <li><span class="n">01</span><span><strong>Fetch.</strong> The Worker requests the company's public surface.</span></li>
+          <li><span class="n">02</span><span><strong>Fingerprint.</strong> It names the go-to-market technology that surface exposes: CRM, outbound tooling, analytics.</span></li>
+          <li><span class="n">03</span><span><strong>Read.</strong> Workers AI takes that list and writes the field read.</span></li>
+          <li><span class="n">04</span><span><strong>Return.</strong> The response comes back from the edge. One request in, one read back.</span></li>
+        </ol>
+        <p class="caveat">The case study describes the build as having no scraper farm and no external infrastructure.</p>
+      </div>
+
+      <div class="block">
+        <h2>Outputs</h2>
+        <ul class="ticks">
+          <li>The list of detected tools.</li>
+          <li>A plain-English GTM interpretation: how this stack suggests they operate, and where an opening might be.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Sample output</h2>
+        <div class="sample">
+          <h3>Field read</h3>
+          <p class="shape">The shape of a response, from the case study. No example company or tool list is published, so this card does not name vendors.</p>
+          <dl>
+            <div>
+              <dt>Input</dt>
+              <dd>The company URL you typed.</dd>
+            </div>
+            <div>
+              <dt>Detected</dt>
+              <dd>CRM, outbound tooling, and analytics found on the public page.</dd>
+            </div>
+            <div>
+              <dt>Field read</dt>
+              <dd>A short note on what that stack implies about how they go to market, and where an opening might be.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Source</h2>
+        <p class="source">Written from <a href="https://pushtomain.xyz/work/lamplighter/">the Lamplighter case study</a>. Public code: none under <a href="https://github.com/joelrmartinez">github.com/joelrmartinez</a> as of 19 Oct 2026, so there is no repository link on this page.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot-grid">
+        <nav class="foot-links">
+          <a href="mailto:joel@pushtomain.xyz">Email</a>
+          <a href="https://www.linkedin.com/in/joelrmartinez/">LinkedIn</a>
+          <a href="https://github.com/joelrmartinez">GitHub</a>
+          <a href="https://x.com/itsjoelmartinez">X</a>
+        </nav>
+        <p class="colophon">
+          Handwritten HTML. Self-hosted type (Apfel Grotezk by Collletttivo).
+          Shipped on Cloudflare. <span class="wordmark">push to main</span> · © 2026
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

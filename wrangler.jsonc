@@ -3,17 +3,31 @@
   "name": "pushtomain",
   "compatibility_date": "2026-07-27",
 
-  // Custom domains (zone active on Cloudflare as of 2026-07-27).
+  // Custom domains. Zone pushtomain.xyz is on Cloudflare.
+  // On deploy, each custom_domain entry makes this Worker the origin for that
+  // hostname. Cloudflare creates the proxied DNS record and the certificate.
+  // Apex and www already exist. merlin and lamplighter are added here.
+  // They are NXDOMAIN until this deploys. A conflicting CNAME on either name
+  // would block creation. There is no record today.
   "routes": [
     { "pattern": "pushtomain.xyz", "custom_domain": true },
-    { "pattern": "www.pushtomain.xyz", "custom_domain": true }
+    { "pattern": "www.pushtomain.xyz", "custom_domain": true },
+    { "pattern": "merlin.pushtomain.xyz", "custom_domain": true },
+    { "pattern": "lamplighter.pushtomain.xyz", "custom_domain": true }
   ],
 
-  // Assets-only site — no Worker script, just static files from the repo root.
+  // Static files from the repo root, plus a tiny script so the two showcase
+  // hostnames can serve their own page. run_worker_first has to be true:
+  // its patterns are paths, not hosts, and "/" would otherwise match the
+  // apex index.html on every hostname. The script returns ASSETS.fetch
+  // immediately for apex and www.
+  "main": "src/index.mjs",
   "assets": {
     "directory": ".",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
 
   "observability": { "enabled": true }
