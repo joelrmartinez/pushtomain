@@ -35,7 +35,7 @@ Push to Main is the email letter.
 ## Tools (The Circus)
 
 - [Lamplighter](https://pushtomain.xyz/work/lamplighter.md): Live GTM-stack fingerprinting. Walkthrough: https://lamplighter.pushtomain.xyz
-- [Connie](https://pushtomain.xyz/work/connie.md): Open-source hiring-signal engine (github.com/joelrmartinez/connie)
+- [Connie](https://pushtomain.xyz/work/connie.md): Open-source hiring-signal engine (github.com/joelrmartinez/connie). Walkthrough: https://connie.pushtomain.xyz
 - [The Math of Sales](https://pushtomain.xyz/work/math-of-sales.md): Outbound unit-economics calculator
 - [Cassette](https://pushtomain.xyz/work/cassette.md): Local meeting recorder (in progress)
 

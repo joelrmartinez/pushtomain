@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connie · hiring-signal engine · Joel Martinez</title>
+  <meta name="description" content="Walkthrough of Connie: an open-source Go engine that scans Ashby, Greenhouse, Lever, and Workable job boards and remembers every posting it has seen.">
+  <meta property="og:title" content="Connie · a hiring-signal engine">
+  <meta property="og:description" content="Scan public job boards, filter the postings you care about, and keep a SQLite Registry of what changed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://connie.pushtomain.xyz/">
+  <link rel="canonical" href="https://connie.pushtomain.xyz/">
+  <link rel="preload" href="/fonts/ApfelGrotezk-Fett.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ApfelGrotezk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/showcases/showcase.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <a class="mark" href="https://pushtomain.xyz/">push to main</a>
+      <nav class="top-nav">
+        <a href="https://pushtomain.xyz/#how">How I help</a>
+        <a href="https://pushtomain.xyz/about/">About</a>
+        <a href="https://pushtomain.xyz/blog/">Blog</a>
+        <a href="https://pushtomain.xyz/services/">Services</a>
+      </nav>
+    </header>
+
+    <section class="detail-hero">
+      <p class="kicker reveal d2">Showcase · The Circus · 03</p>
+      <h1 class="detail-title reveal d3">Connie</h1>
+      <p class="detail-lede reveal d4">An open-source Go engine that scans public job boards concurrently, and remembers every posting she has ever seen. Job postings are hiring signals. Connie is the memory that makes them legible.</p>
+      <p class="walkthrough reveal d5">This page is a walkthrough of that engine: what goes in, what runs, and what comes back. The scanner is the Go binary in the public repo.</p>
+      <div class="tags reveal d5">
+        <span class="tag soon">Go</span>
+        <span class="tag soon">SQLite</span>
+        <span class="tag soon">Concurrency</span>
+        <span class="tag live">Open source</span>
+      </div>
+      <div class="hero-ctas reveal d6">
+        <a class="visit" href="https://github.com/joelrmartinez/connie">Read the code <span class="arrow">↗</span></a>
+        <a class="visit visit-ghost" href="https://pushtomain.xyz/work/connie/">Read the case study <span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <div class="stat-band">
+      <div class="stat"><div class="big">3</div><div class="cap">ATS platforms in the case study, behind one adapter. The README also names Workable</div></div>
+      <div class="stat"><div class="big">1</div><div class="cap">static binary, one direct dependency, cross-compiles anywhere</div></div>
+      <div class="stat"><div class="big">0</div><div class="cap">mutexes in the worker pool. Channel-owned state, proven by the race detector</div></div>
+    </div>
+
+    <div class="detail-body">
+      <div class="block">
+        <h2>What it does</h2>
+        <p>A job posting is a buying signal: it says what a company is about to invest in, the day they decide it. The public, unauthenticated APIs of the major applicant-tracking systems expose the boards. A scraper that only fetches them tells you what exists. Connie keeps the memory, so the next run can say what changed.</p>
+        <p>The case study names Ashby, Greenhouse, and Lever behind one adapter interface, with more platforms at about 100 lines each. The public README lists those three and Workable. She is named for Connie Sachs of <em>Tinker Tailor Soldier Spy</em>, the researcher whose head was the Registry.</p>
+      </div>
+
+      <div class="block">
+        <h2>How it works</h2>
+        <div class="pipeline" aria-hidden="true">
+          <b>Scan</b><span>→</span>
+          <b>Filter</b><span>→</span>
+          <b>Registry</b><span>→</span>
+          <b>Export</b>
+        </div>
+
+        <h2>Inputs</h2>
+        <ul class="ticks">
+          <li>Board lists. A fresh clone ships hand-curated seeds per ATS. <code>discover</code> can add slugs harvested from the Wayback Machine.</li>
+          <li>A filter: a fuzzy title, a case-insensitive regex over descriptions, or an unfiltered run that takes every listed posting.</li>
+          <li>A contact string in the User-Agent. The README asks for one, and for concurrency left at the default of 8.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Steps</h2>
+        <ul class="steps">
+          <li><strong>Scan.</strong> A bounded worker pool fetches the boards. One aggregator goroutine owns all mutable state. No mutexes, proven under the race detector. A dead board is counted. It does not abort the run.</li>
+          <li><strong>Filter.</strong> A title match runs in both directions. A description regex keeps only the matched fragments. Full descriptions are not stored.</li>
+          <li><strong>Remember.</strong> The Registry is SQLite, one transaction per scan. Each posting carries first_seen, last_seen, and closed_at.</li>
+          <li><strong>Close, carefully.</strong> Only a full unfiltered scan may declare a posting gone, and only on the boards that run actually covered. A posting that reappears is reopened.</li>
+          <li><strong>Discover.</strong> Board slugs come from the Wayback Machine CDX index, then a shape filter, then a probe against the live ATS. The union of seeds and discovered boards never shrinks.</li>
+          <li><strong>Export.</strong> Matching postings go out as CSV and JSON. <code>query</code> reads the Registry offline, including what is open and new since a window such as 24h.</li>
+        </ul>
+        <p class="caveat">The only direct dependency named in the README is modernc.org/sqlite, so the binary builds with CGO off. Live tests sit behind a build tag. CI stays on recorded fixtures.</p>
+      </div>
+
+      <div class="block">
+        <h2>Outputs</h2>
+        <ul class="ticks">
+          <li>A CSV and a JSON file of the postings that matched.</li>
+          <li>A Registry line: how many postings are new, updated, or closed, and how many boards came back dead or in error.</li>
+          <li>An offline query of the Registry. Run on a schedule, the diff is who started hiring for what, the day it opened.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Sample output</h2>
+        <div class="sample">
+          <h3>Scan</h3>
+          <p class="shape">The example printed in the README, for <code>connie scan --title "revenue operations"</code>.</p>
+          <dl>
+            <div>
+              <dt>Boards</dt>
+              <dd>35/35.</dd>
+            </div>
+            <div>
+              <dt>Registry</dt>
+              <dd>6 new, 0 updated, 0 closed, in connie.db.</dd>
+            </div>
+            <div>
+              <dt>Export</dt>
+              <dd>6 postings written to connie-jobs.csv and connie-jobs.json.</dd>
+            </div>
+            <div>
+              <dt>Health</dt>
+              <dd>0 dead boards. 0 errors.</dd>
+            </div>
+            <div>
+              <dt>One row</dt>
+              <dd>ashby, render, Revenue Operations Manager, with the job URL.</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="sample">
+          <h3>Second run</h3>
+          <p class="shape">The receipt in the case study. A different run from the README example above.</p>
+          <dl>
+            <div>
+              <dt>Scope</dt>
+              <dd>67 seed boards, three ATSes, zero errors.</dd>
+            </div>
+            <div>
+              <dt>What she found</dt>
+              <dd>A remote "AI GTM Architect (Revenue Operations)" posting that an Ashby-only sweep could not see.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Source</h2>
+        <p class="source">Written from <a href="https://pushtomain.xyz/work/connie/">the Connie case study</a> and the public repo <a href="https://github.com/joelrmartinez/connie">github.com/joelrmartinez/connie</a>. The README's design notes cover the worker pool, the Registry lifecycle, and why the binary stays static.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot-grid">
+        <nav class="foot-links">
+          <a href="mailto:joel@pushtomain.xyz">Email</a>
+          <a href="https://www.linkedin.com/in/joelrmartinez/">LinkedIn</a>
+          <a href="https://github.com/joelrmartinez">GitHub</a>
+          <a href="https://x.com/itsjoelmartinez">X</a>
+        </nav>
+        <p class="colophon">
+          Handwritten HTML. Self-hosted type (Apfel Grotezk by Collletttivo).
+          Shipped on Cloudflare. <span class="wordmark">push to main</span> · © 2026
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

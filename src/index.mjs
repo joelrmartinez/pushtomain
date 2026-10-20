@@ -1,4 +1,4 @@
-// Host routing for the two showcase subdomains.
+// Host routing for the showcase subdomains.
 // Apex and www stay on the static site: hand the request to the asset binding
 // and do nothing else. Showcase hosts serve one walkthrough page, plus the
 // shared CSS, fonts, and images that page needs.
@@ -6,6 +6,7 @@
 const SHOWCASES = {
   "merlin.pushtomain.xyz": "merlin",
   "lamplighter.pushtomain.xyz": "lamplighter",
+  "connie.pushtomain.xyz": "connie",
 };
 
 const STATIC_FILE = /\.(?:css|js|mjs|map|woff2?|ttf|otf|png|jpe?g|gif|webp|svg|ico|txt|xml|webmanifest)$/i;

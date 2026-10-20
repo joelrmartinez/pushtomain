@@ -64,6 +64,9 @@
   border-top: 3px solid var(--green);
   padding: 1.15rem 1.15rem 0.35rem;
 }
+.sample + .sample {
+  margin-top: 1rem;
+}
 .sample h3 {
   font-weight: 500;
   font-size: 0.78rem;

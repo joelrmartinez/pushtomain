@@ -5,7 +5,8 @@
 > An open-source Go engine that scans Ashby, Greenhouse, and Lever job boards concurrently. And remembers every posting she has ever seen. Job postings are hiring signals; Connie is the memory that makes them legible.
 
 **Stack:** Go · SQLite · Concurrency · Open source
-**Live:** https://github.com/joelrmartinez/connie
+**Live:** https://connie.pushtomain.xyz
+**Code:** https://github.com/joelrmartinez/connie
 
 ## Key numbers
 

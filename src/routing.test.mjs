@@ -36,6 +36,7 @@ const pages = {
   "/fonts/ApfelGrotezk-Fett.woff2": { body: "font", type: "font/woff2" },
   "/showcases/merlin/": { body: "<title>Merlin</title>" },
   "/showcases/lamplighter/": { body: "<title>Lamplighter</title>" },
+  "/showcases/connie/": { body: "<title>Connie</title>" },
 };
 
 async function get(env, url, method = "GET") {
@@ -59,12 +60,14 @@ test("showcase hosts serve their walkthrough at the root and at other paths", as
   const root = await get(env, "https://merlin.pushtomain.xyz/");
   const deep = await get(env, "https://merlin.pushtomain.xyz/anything");
   const lamp = await get(env, "https://lamplighter.pushtomain.xyz/lookup");
+  const connie = await get(env, "https://connie.pushtomain.xyz/");
   assert.equal(await root.text(), "<title>Merlin</title>");
   assert.equal(await deep.text(), "<title>Merlin</title>");
   assert.equal(await lamp.text(), "<title>Lamplighter</title>");
+  assert.equal(await connie.text(), "<title>Connie</title>");
   assert.deepEqual(
     calls.map((call) => call.pathname),
-    ["/showcases/merlin/", "/showcases/merlin/", "/showcases/lamplighter/"],
+    ["/showcases/merlin/", "/showcases/merlin/", "/showcases/lamplighter/", "/showcases/connie/"],
   );
 });
 
