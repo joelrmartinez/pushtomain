@@ -32,20 +32,14 @@
   margin-top: 0.3rem;
 }
 .steps li {
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: 0.75rem;
   padding: 0.85rem 0;
   border-top: 1px solid var(--rule);
 }
-.steps .n {
-  font-weight: 700;
-  color: var(--green);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.03em;
+.steps li:last-child {
+  border-bottom: 1px solid var(--rule);
 }
 .steps strong {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .ticks {
