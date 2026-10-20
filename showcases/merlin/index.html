@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merlin · funding signal engine · Joel Martinez</title>
+  <meta name="description" content="Walkthrough of Merlin: companies that just filed a Form D, scored 0 to 100 against an ICP, ranked on a Cloudflare dashboard.">
+  <meta property="og:title" content="Merlin · a funding signal engine">
+  <meta property="og:description" content="Companies that just raised, scored 0 to 100 against an ICP, ranked on a dashboard. A walkthrough of the Cloudflare engine.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://merlin.pushtomain.xyz/">
+  <link rel="canonical" href="https://merlin.pushtomain.xyz/">
+  <link rel="preload" href="/fonts/ApfelGrotezk-Fett.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ApfelGrotezk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/showcases/showcase.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <a class="mark" href="https://pushtomain.xyz/">push to main</a>
+      <nav class="top-nav">
+        <a href="https://pushtomain.xyz/#how">How I help</a>
+        <a href="https://pushtomain.xyz/about/">About</a>
+        <a href="https://pushtomain.xyz/blog/">Blog</a>
+        <a href="https://pushtomain.xyz/services/">Services</a>
+      </nav>
+    </header>
+
+    <section class="detail-hero">
+      <p class="kicker reveal d2">Showcase · The Circus · 01</p>
+      <h1 class="detail-title reveal d3">Merlin</h1>
+      <p class="detail-lede reveal d4">A signal engine that finds companies the moment they raise capital, scores each with an AI propensity model, and surfaces the ranked results live. Running entirely on Cloudflare.</p>
+      <p class="walkthrough reveal d5">This page is a walkthrough of that engine: what goes in, what runs, and what comes back. The scoring itself happens in the Worker described in the case study.</p>
+      <div class="tags reveal d5">
+        <span class="tag soon">Cloudflare</span>
+        <span class="tag soon">Workflows</span>
+        <span class="tag soon">Workers AI</span>
+        <span class="tag soon">D1</span>
+      </div>
+      <div class="hero-ctas reveal d6">
+        <a class="visit" href="https://pushtomain.xyz/work/merlin/">Read the case study <span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <div class="stat-band">
+      <div class="stat"><div class="big">100%</div><div class="cap">Cloudflare-native. No external infrastructure</div></div>
+      <div class="stat"><div class="big">0</div><div class="cap">external API keys required to run it</div></div>
+      <div class="stat"><div class="big">0 to 100</div><div class="cap">AI-scored ICP fit for every company found</div></div>
+    </div>
+
+    <div class="detail-body">
+      <div class="block">
+        <h2>What it does</h2>
+        <p>Merlin watches one buying signal: companies that just raised capital, pulled from public SEC EDGAR Form D filings. The reason to call is already on the record.</p>
+        <p>Each company is enriched, then scored from 0 to 100 against an ICP. Workers AI writes the reasoning. The ranked rows land in D1 and render on a public dashboard served from the same Worker.</p>
+        <p>The ICP is a swappable definition. The first instance scores companies against a developer-platform and edge-infrastructure ICP. Point the same engine at a different buyer and it re-scores against the new target.</p>
+      </div>
+
+      <div class="block">
+        <h2>How it works</h2>
+        <div class="pipeline" aria-hidden="true">
+          <b>Cron</b><span>→</span>
+          <b>Workflow</b><span>→</span>
+          <b>Enrich</b><span>→</span>
+          <b>Score</b><span>→</span>
+          <b>D1</b><span>→</span>
+          <b>Dashboard</b>
+        </div>
+
+        <h2>Inputs</h2>
+        <ul class="ticks">
+          <li>A weekly cron trigger, or Run now on the dashboard.</li>
+          <li>Public SEC EDGAR Form D filings.</li>
+          <li>An ICP definition. The first one is developer platforms and edge infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Steps</h2>
+        <ul class="steps">
+          <li><strong>Discover.</strong> The cron starts a weekly run, or someone hits Run now.</li>
+          <li><strong>Orchestrate.</strong> A durable Workflow runs the steps and retries on its own.</li>
+          <li><strong>Enrich.</strong> Workers fan out across the companies in the run.</li>
+          <li><strong>Score.</strong> Workers AI acts as the propensity model: a 0 to 100 fit score, plus the reasoning.</li>
+          <li><strong>Store.</strong> The rows land in D1.</li>
+          <li><strong>Show.</strong> The same Worker serves the ranked dashboard.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Outputs</h2>
+        <ul class="ticks">
+          <li>A ranked list of companies that just filed.</li>
+          <li>A 0 to 100 ICP fit score on every company.</li>
+          <li>The written reasoning behind the score.</li>
+          <li>A public dashboard.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2>Sample output</h2>
+        <div class="sample">
+          <h3>Ranked row</h3>
+          <p class="shape">The fields a row carries, from the case study. No sample company is published. The card names the fields.</p>
+          <dl>
+            <div>
+              <dt>Signal</dt>
+              <dd>SEC EDGAR Form D. The company just raised.</dd>
+            </div>
+            <div>
+              <dt>Score</dt>
+              <dd>0 to 100, fit against the active ICP.</dd>
+            </div>
+            <div>
+              <dt>Reasoning</dt>
+              <dd>A short note from Workers AI on why the score landed where it did.</dd>
+            </div>
+            <div>
+              <dt>ICP</dt>
+              <dd>Developer platform and edge infrastructure, until the definition is swapped.</dd>
+            </div>
+            <div>
+              <dt>Where it sits</dt>
+              <dd>D1, then the public dashboard, highest fit first.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Source</h2>
+        <p class="source">Written from <a href="https://pushtomain.xyz/work/merlin/">the Merlin case study</a>. Public code: none under <a href="https://github.com/joelrmartinez">github.com/joelrmartinez</a> as of 19 Oct 2026, so there is no repository link on this page.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot-grid">
+        <nav class="foot-links">
+          <a href="mailto:joel@pushtomain.xyz">Email</a>
+          <a href="https://www.linkedin.com/in/joelrmartinez/">LinkedIn</a>
+          <a href="https://github.com/joelrmartinez">GitHub</a>
+          <a href="https://x.com/itsjoelmartinez">X</a>
+        </nav>
+        <p class="colophon">
+          Handwritten HTML. Self-hosted type (Apfel Grotezk by Collletttivo).
+          Shipped on Cloudflare. <span class="wordmark">push to main</span> · © 2026
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
