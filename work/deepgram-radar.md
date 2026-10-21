@@ -10,7 +10,7 @@
 ## Key numbers
 
 - **3**. Public sources: GitHub repo search, Hacker News launches, and Ashby, Greenhouse, and Lever job boards
-- **46**. Accounts kept from one real run: 4 to an AE, 1 to APAC, 5 to human review, 36 to nurture
+- **42**. Accounts kept from one real run: 4 to an AE, 5 to human review, 33 to nurture, 0 to APAC
 - **0**. Network calls in the test suite. A socket guard fails any test that tries
 
 ## The idea
@@ -23,7 +23,7 @@ Collectors for GitHub, Hacker News, and public job boards; a merge and regex tag
 
 ## The receipt
 
-- First real run: Bland, Assort Health, Decagon, and Parloa routed to an AE; LiveKit, Pipecat, and Stream flagged for partnerships.
+- First real run: Bland, Assort Health, Decagon, and Parloa routed to an AE; LiveKit, Pipecat, Vapi, and Stream sent to human review as likely partners or existing customers.
 - Sample output with score parts and source links is committed next to the code.
 - Inside Deepgram it would join Salesforce, console usage, and Ordway or Metronome billing.
 
