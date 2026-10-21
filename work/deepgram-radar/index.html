@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepgram Expansion Radar · Joel Martinez</title>
+  <meta name="description" content="A small Python pipeline that finds teams building voice agents from public signals, scores them for fit, and routes each one to self-serve nurture, an AE, or the APAC team.">
+  <meta property="og:title" content="Deepgram Expansion Radar">
+  <meta property="og:description" content="Public signals in, ranked and routed accounts out. Every step labelled deterministic, AI, or human review.">
+  <meta property="og:type" content="article">
+  <link rel="preload" href="/fonts/ApfelGrotezk-Fett.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ApfelGrotezk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <a class="mark" href="/">push to main</a>
+      <nav class="top-nav">
+        <a href="/#how">How I help</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+        <a href="/services/">Services</a>
+      </nav>
+    </header>
+
+    <section class="detail-hero">
+      <p class="kicker reveal d2">Proof piece · Deepgram</p>
+      <h1 class="detail-title reveal d3">Deepgram Expansion Radar</h1>
+      <p class="detail-lede reveal d4">A small Python pipeline that finds teams building voice agents from public signals, scores each one for fit, and routes it to self-serve nurture, an AE, or the APAC team. Every step is labelled deterministic, AI, or human review.</p>
+      <div class="tags reveal d5">
+        <span class="tag soon">Python</span>
+        <span class="tag soon">pytest</span>
+        <span class="tag soon">GitHub Actions</span>
+        <span class="tag live">Real data</span>
+      </div>
+      <div class="hero-ctas reveal d6">
+        <a class="visit" href="https://github.com/joelrmartinez/deepgram-expansion-radar">Read the code <span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <div class="stat-band">
+      <div class="stat"><div class="big">3</div><div class="cap">public sources: GitHub repo search, Hacker News launches, and Ashby, Greenhouse, and Lever job boards</div></div>
+      <div class="stat"><div class="big">46</div><div class="cap">accounts kept from one real run: 4 to an AE, 1 to APAC, 5 to human review, 36 to nurture</div></div>
+      <div class="stat"><div class="big">0</div><div class="cap">network calls in the test suite. A socket guard fails any test that tries</div></div>
+    </div>
+
+    <div class="detail-body">
+      <div class="block">
+        <h2>The idea</h2>
+        <p>Deepgram sells two ways at once: a developer console where anyone can start on credits, and an enterprise team that closes contact centers, drive-thrus, and voice agent platforms. The hard GTM engineering question sits between them: which teams should a human talk to, and which should the product keep nurturing?</p>
+        <p>The radar answers it from the outside in. It looks for teams shipping voice agents in public, scores how much they look like Deepgram's best customers, and hands each one to the right owner with the evidence attached.</p>
+      </div>
+      <div class="block">
+        <h2>What I built</h2>
+        <p>Collectors pull organisation-owned repos from GitHub search, Show HN and Launch HN posts from the Algolia API, and voice-related roles from a curated list of public job boards. Hits merge by domain, then regex tags mark intent: mentions Deepgram, builds voice agents, runs on LiveKit, Pipecat, Vapi, or Twilio, uses a competitor's speech-to-text, sells into contact center, restaurants, or healthcare.</p>
+        <p>The score is a plain formula out of 100: <code>intent + displacement + traction + corroboration + vertical</code>, with every part exported so a rep can see why. Routing is an ordered rule list. Competitors and platform partners never auto-route. APAC locations and ccTLDs go to the Singapore team. AE-level scores without a verified domain go to a human first.</p>
+        <p>The only AI step is an optional one-line "why now" note per account. It cannot move a score or a route. Config lives in a YAML file with env overrides, secrets live in env only, logs are structured JSON, and CI runs ruff, mypy, and pytest on three Python versions.</p>
+      </div>
+      <div class="block">
+        <h2>The receipt</h2>
+        <ul class="results-list">
+          <li>First real run: Bland, Assort Health, Decagon, and Parloa routed to an AE on voice-heavy hiring; LiveKit, Pipecat, and Stream flagged for partnerships instead of sales.</li>
+          <li>The sample output, with scores broken into parts and a link to the source signal for each account, is committed next to the code.</li>
+          <li>What it would need inside Deepgram: Salesforce accounts, console usage, and Ordway or Metronome billing joined in, so "already a customer" and "usage spiking" become the strongest signals. The public view is the starting point, not the answer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <div class="foot-grid">
+        <nav class="foot-links">
+          <a href="mailto:joel@pushtomain.xyz">Email</a>
+          <a href="https://www.linkedin.com/in/joelrmartinez/">LinkedIn</a>
+          <a href="https://github.com/joelrmartinez">GitHub</a>
+          <a href="https://x.com/itsjoelmartinez">X</a>
+        </nav>
+        <p class="colophon">
+          Handwritten HTML. Self-hosted type (Apfel Grotezk by Collletttivo).
+          Shipped on Cloudflare. <span class="wordmark">push to main</span> · © 2026
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
